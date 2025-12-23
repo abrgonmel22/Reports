@@ -1,0 +1,307 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage[T1]{fontenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{siunitx}
+\usepackage{tikz,pgfplots}
+\usepackage{longtable}
+\usepackage[spanish, shorthands=off, es-nodecimaldot]{babel}
+
+\geometry{letterpaper, margin=2.5cm}
+\onehalfspacing %para dar espacio entre lineas
+%\renewcommand{\tablename}{Tabla}
+%\renewcommand{\figurename}{Figura}
+\sisetup{per-mode=fraction}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+% ----> inicio portada <----
+\begin{titlepage}
+	\begin{textblock*}{2cm}(0.1in,0.5in)
+		\includegraphics[width=3.6cm]{esime.png}
+	\end{textblock*}
+	\begin{textblock*}{2.5cm}(6.5in,0.45in)
+		\includegraphics[width=3.9cm]{ipn.png}
+	\end{textblock*}
+	\begin{textblock*}{2cm}(0.1in,9in)
+		\includegraphics[width=1.9\linewidth]{esime-ice.png}
+	\end{textblock*}
+	\begin{center}
+		{\huge {\textsc{Instituto Politécnico Nacional}} \par}
+		{\large \textsc{Escuela Superior de Ingeniería Mecánica Y Eléctrica} \par}
+		{\large \textsc{Unidad Zacatenco} \par}
+		{\large \textsc{Ingeniería en Comunicaciones y Electrónica} \par}
+		\vspace{1.5cm}
+		{\huge \textbf{\textsc{Laboratorio de Oscilaciones y Ondas}} \par}
+		\vspace{1.5cm}
+		{\LARGE \textsc{\textbf{Práctica 3:} Superposición de Ondas} \par}
+		\vspace{1.5cm}
+		{\Large \textsc{Profesor: Cesar Sandoval Gonzalez}\par}
+		\vspace{1cm}
+		{\Large \textsc{Grupo: 3CM7}\par}
+		\vspace{1cm}
+		{\Large \textsc{Integrantes:}\par}
+		\vspace{0.5cm}
+		{\large \textsc{Gonzalez Melchor Abraham}\par} %integrante 4    ya
+		
+		
+		
+	\end{center}
+\end{titlepage}
+% ----> fin de la portada <----
+% ----> indice <----
+	\tableofcontents
+% ----> fin indice <----
+	\newpage 
+% ----> objetivos <----
+	\section{Objetivo}
+		\begin{itemize}[label=$\circ$]
+			\item Analizar las figuras de Lissajous mediante la superposición de ondas
+		\end{itemize}
+% ----> fin objetivos <----
+% ----> materiales <----
+	\section{Materiales usados}
+		\begin{enumerate}
+			\item Osciloscopio de \SI{30}{\mega\hertz}
+			\item Generador de señales digitales
+			\item Generador de señales
+			\item Cables BNC-BNC
+			\item Simulador Multisim
+		\end{enumerate}
+% ----> fin materiales <----
+	%\newpage
+% ----> Introducción <----
+	\section{Introducción}
+	\subsection{Interferencia de ondas}
+	La interferencia es un fenómeno que ocurre cuando dos o más ondas se superponen en un mismo punto del espacio, dando lugar a una onda resultante cuya amplitud depende de la suma algebraica de las ondas que la originan. Dependiendo de la relación de fase entre las ondas, la interferencia puede ser:
+	\begin{itemize}
+		\item Constructiva, cuando las ondas están en fase y sus amplitudes se suman, produciendo un aumento en la amplitud resultante.
+		\item Destructiva, cuando las ondas están en oposición de fase y sus amplitudes se restan, pudiendo incluso anularse mutuamente.
+	\end{itemize}
+	\noindent Este fenómeno puede observarse en distintos tipos de ondas, como ondas mecánicas (sonido, ondas en el agua), ondas electromagnéticas (luz, radio, etc) y en muchos sistemas físicos donde exista propagación ondulatoria. La interferencia es una manifestación directa del principio de superposición, el cual establece que, en medios lineales, la perturbación total es la suma de las perturbaciones individuales.
+	\subsection{Curvas de Lissajous}
+	Una curva de Lissajous, también conocida como figura de Lissajous o curva de Bowditch, es la gráfica generada por la superposición de dos movimientos armónicos simples que actúan en direcciones perpendiculares, típicamente en los ejes $x$ y $y$.
+	\noindent Estas curvas se describen mediante el siguiente sistema de ecuaciones paramétricas:
+	\begin{gather}
+	x(t) = A \sin(\omega_x t + \alpha)
+	\\
+	y(t) = B \sin(\omega_y t + \beta)
+	\end{gather}
+	donde:
+	\begin{itemize}[label=--]
+		\item $A$ y $B$ son las amplitudes de oscilación en los ejes $x$ e $y$, respectivamente.
+		\item $\omega_x$ y $\omega_y$ son las frecuencias angulares de cada oscilador.
+		\item $\alpha$ y $\beta$ son las fases iniciales.
+		\item $\delta = \alpha - \beta$ representa la diferencia de fase entre ambas señales.
+	\end{itemize}
+	Esta familia de curvas fue estudiada por primera vez por Nathaniel Bowditch en el año 1815, y posteriormente fue analizada con mayor detalle por el físico francés Jules Antoine Lissajous, quien profundizó en sus propiedades y aplicaciones experimentales. Debido a sus aportaciones, estas trayectorias reciben el nombre de curvas de Lissajous. En el contexto de la mecánica clásica, estas curvas aparecen de manera natural cuando se analiza la trayectoria de una partícula que realiza un movimiento armónico simple bidimensional, es decir, cuando un cuerpo oscila simultáneamente en dos direcciones perpendiculares entre sí, como los ejes $x$ e $y$.
+	\noindent Este tipo de movimiento puede describirse como la superposición de dos oscilaciones independientes, cada una con su propia amplitud, frecuencia y fase. La trayectoria que se obtiene al combinar ambos movimientos no es aleatoria, sino que sigue una forma geométrica bien definida: la curva de Lissajous. Estas curvas permiten visualizar de manera clara cómo interactúan dos movimientos armónicos cuando se combinan simultáneamente.
+	La apariencia de la figura es extremadamente sensible a la relación entre las frecuencias angulares de ambos movimientos, es decir, al cociente:
+	\[\frac{\omega_x}{\omega_y}\]
+	Este cociente representa qué tan rápido oscila el movimiento en el eje $x$ con respecto al movimiento en el eje $y$. Cuando esta relación es igual a 1, significa que ambas oscilaciones tienen la misma frecuencia, por lo que ambos movimientos se repiten exactamente al mismo ritmo. En este caso, la figura que se obtiene es una elipse.
+
+	Dentro de este caso particular aparecen dos situaciones importantes como casos especiales. Si además de que las frecuencias son iguales, también se cumple que las amplitudes son iguales ($A=B$) y que existe una diferencia de fase de $\delta=\frac{\pi}{2}$ radianes, entonces la elipse se convierte en un círculo, lo que implica que el punto que se mueve describe una trayectoria perfectamente simétrica. Por otro lado, cuando la diferencia de fase es $\delta=0$, es decir, cuando ambos movimientos están completamente en fase, la trayectoria deja de ser curva y se convierte en una línea recta, ya que el punto se mueve de manera perfectamente sincronizada en ambos ejes.
+
+	Otra figura sencilla que también puede obtenerse como curva de Lissajous es la parábola, la cual aparece cuando la relación de frecuencias es $\frac{\omega_x}{\omega_y}=2$ y la diferencia de fase es $\delta=\frac{\pi}{2}$. En este caso, el movimiento en el eje $y$ ocurre al doble de velocidad que en el eje , lo que provoca que la trayectoria adopte una forma abierta con simetría parabólica.
+
+	Cuando la relación $\frac{\omega_x}{\omega_y}$ toma otros valores distintos de los casos anteriores, se generan curvas más complejas. Estas curvas únicamente son cerradas cuando dicho cociente es un número racional, es decir, cuando puede expresarse como el cociente de dos números enteros. Cuando esto sucede, se dice que las frecuencias $\omega_x $ y $\omega_y $ son conmensurables, lo que significa que existe un múltiplo común entre ambos movimientos y, por lo tanto, la trayectoria vuelve a repetirse exactamente después de cierto intervalo de tiempo.
+
+	En cambio, cuando el cociente $\frac{\omega_x}{\omega_y}$ es un número irracional, las frecuencias ya no guardan una relación exacta entre sí, por lo que el movimiento nunca se repite de forma periódica. En este caso, la curva no se cierra y la trayectoria se va extendiendo dentro de un rectángulo definido por las amplitudes $A$ y $B$, formando un conjunto denso. Esto significa que, con el paso del tiempo, el punto en movimiento llega a pasar arbitrariamente cerca de cualquier punto dentro de dicho rectángulo, sin llegar a trazar una figura repetitiva definida.
+	Cuando el cociente sí es racional, existen dos números naturales $a_x $ y $ b_y $ tales que se cumple la relación:
+	\[ \frac{\omega_x}{\omega_y} = \frac{a_x}{b_y} = \frac{T_y}{T_x} \]
+	donde $T_x $ y $T_y $ representan los períodos de las oscilaciones en los ejes $x$ e $y$, respectivamente. Esto significa que ambos movimientos tienen un período común, el cual corresponde al tiempo mínimo necesario para que simultáneamente ambas oscilaciones regresen a su estado inicial.
+
+	\noindent Unos ejemplos característicos de las curvas de Lissajous:\par
+	\bigskip
+%-------------------------------------------------------------------------------
+	% ----------------- ETIQUETAS DE COLUMNAS -----------------
+	\noindent
+	\makebox[0.08\textwidth][l]{}%
+	\makebox[0.18\textwidth][c]{$\phi = 0$}%
+	\makebox[0.18\textwidth][c]{$\phi = \pi/4$}%
+	\makebox[0.18\textwidth][c]{$\phi = \pi/2$}%
+	\makebox[0.18\textwidth][c]{$\phi = 3\pi/4$}%
+	\makebox[0.18\textwidth][c]{$\phi = \pi$}%
+	\par\vspace{2mm}
+
+	% ----------------- FILAS -----------------
+	\foreach \a/\b in {1/1, 2/1, 3/2, 4/3, 5/4}{
+
+	  % Columna izquierda ANCLADA A LA IZQUIERDA
+	  \begin{minipage}[t]{0.08\textwidth}
+	    \raggedright
+	    $\a:\b$
+	  \end{minipage}%
+	  %
+	  % Bloque con las 5 columnas centradas
+	  \begin{minipage}[t]{0.92\textwidth}
+	    \centering
+	    \foreach \p in {0, 0.785398, 1.5708, 2.35619, 3.14159}{
+	      \begin{minipage}[c]{0.18\textwidth}
+	        \centering
+	        \begin{tikzpicture}[scale=0.5]
+	          \begin{axis}[
+	            hide axis,
+	            axis equal,
+	            xmin=-1.2, xmax=1.2,
+	            ymin=-1.2, ymax=1.2,
+	            samples=200,
+	            domain=0:2*pi
+	          ]
+	            \addplot[thick] ({sin(deg(\a*x + \p))}, {sin(deg(\b*x))});
+	          \end{axis}
+	        \end{tikzpicture}
+	      \end{minipage}%
+	    }
+	  \end{minipage}
+
+	  \par\vspace{3mm}
+	}
+	\captionof{figure}{Curvas de Lissajous}
+	\label{figure:lissajous}
+	%-------------------------------------
+% ----> Fin Introducción <----
+	\newpage
+% ----> Desarrollo experimental <----
+	\section{Desarrollo experimental}
+		\subsection{Identificación del periodo de una señal desconocida}
+		\label{sub:identificación_del_periodo_de_una_señal_desconocida}
+			El generador de frecuencia desconocida se colocara en el canal 2 del osciloscopio.
+			Mida el periodo de la señal y determine la frecuencia $f$ y anote su resultado en la tabla \ref{table:Periodo_de_una_senal_desconocida}
+			\begin{center}
+				\includegraphics[width=12cm]{parte_1/1}
+				\captionof{figure}{Conexión de la señal desconocida al canal 2 del osciloscopio}
+				\label{figure:conexion_canal2}
+			\end{center}
+			\begin{center}
+				\includegraphics[width=10cm]{parte_1/2}
+				\captionof{figure}{Visualización de la señal desconocida en el osciloscopio}
+				\label{figure:senal_desconocida}
+			\end{center}
+			Se ajusta la perilla de \textbf{VOLTS/DIV} y la perilla \textbf{SEC/DIV} para obtener una mejor visualización de la onda
+			\begin{center}
+				\includegraphics[width=8.8cm]{parte_1/3}
+				\captionof{figure}{Forma de onda de la señal desconocida en el osciloscopio}
+				\label{figure:onda_senal_desconocida}
+			\end{center}
+		\subsection{Generación de las figuras de Lissajous}
+			El armado del dispositivo anterior se mantiene de la misma manera.
+			Durante toda la actividad se deberá mantener la señal del generador 1 sin modificar.
+			Incorpore un segundo generador de funciones en el canal 1 (CH1-X) y con base en el resultado de la actividad anterior introduzca una señal de la misma frecuencia esto es $\omega_1 = \omega_2 $ o $f_1 = f_2 $.
+			Coloque el osciloscopio en la función de graficación $xy$ y anote sus observaciones.
+			modifique la frecuencia en el segundo generador de manera que obtenga las siguientes relaciones de frecuencia angular $\omega$:
+			\[\frac{\omega_1}{\omega_2}, \frac{\omega_1}{2\omega_2}, \frac{2\omega_1}{\omega_2}, \frac{\omega_1}{3\omega_2}, \frac{3\omega_1}{\omega_2}, \frac{3\omega_1}{2\omega_2}, \frac{3\omega_1}{4\omega_2}, \frac{5\omega_1}{4\omega_2}, \frac{\omega_1}{5\omega_2} \]
+			dado que $\omega = 2\pi f$, no sera necesario calcular $\omega$ para las relaciones indicadas.
+
+			Para darle cumplimiento a las razones en cada caso deberá calcular la frecuencia $f_2$ que sea necesaria. Anote las cantidades de las frecuencias para cada caso en la tabla \ref{table:curvas}
+			\begin{center}
+				\includegraphics[width=10cm]{parte_2/4}
+				\captionof{figure}{Conexión del segundo generador de funciones en el canal 1}
+				\label{figure:conexion_canal1}
+			\end{center}
+% ----> fin desarrollo experimental <----
+% ----> resultados<----
+    \section{Resultados}
+    \subsection{Identificación del periodo de una señal desconocida}
+	    Una vez visualizada la señal desconocida, como se muestra en la Figura~\ref{figure:senal_desconocida}, se procede a identificar su periodo contando el número de divisiones que ocupa un ciclo completo. La forma de onda se aprecia con mayor claridad en la Figura~\ref{figure:onda_senal_desconocida}.
+	    \noindent En la pantalla del osciloscopio se observan aproximadamente 3.4 divisiones desde el origen (centro de la grilla) hasta el punto equivalente a un ciclo. Cada subdivisión corresponde a 0.2 divisiones. El ajuste horizontal es de \textbf{TIME/DIV} igual a \SI{5}{\milli\second} por división.
+	    \begin{gather*}
+	    	T = (\text{Divisiones por ciclo})(\text{Base de tiempo}) \\
+	    	T =  (3.4)(\SI{5}{\milli\second}) \\
+	    	T = \SI{17}{\milli\second}
+	    \end{gather*}
+	    Por lo tanto su periodo son \SI{17}{\milli\second} (\SI{0.017}{\second})
+
+	    Como sabemos que la frecuencia es la inversa del periodo, entonces:
+
+	   \begin{gather*}
+	   		f = \frac{1}{T}\\
+	   		f = \frac{1}{\SI{0.017}{\second}}\\
+	   		f \approx \SI{58.824}{\per\second}\\
+	   		f \approx \SI{58.824}{\hertz}
+	   \end{gather*}
+	   \begin{table}[h]
+	   	\begin{center}
+	    		\caption{Periodo y frecuencia de una señal desconocida}
+	    		\label{table:Periodo_de_una_senal_desconocida}
+	    		\begin{tabular}{ | c | c | c | }
+	    			\hline
+	    			 & Periodo $T$ [\SI{}{\milli\second}] & Frecuencia $f$ [\SI{}{\hertz}]\\\hline
+	    			 Medida de la señal de la señal desconocida ($\omega_x$ ó $a$) & \SI{17}{\milli\second} & \SI{58.824}{\hertz} \\
+	    			 \hline
+	    		\end{tabular}
+	    	\end{center}
+	   \end{table}
+	\subsection{Generación de las figuras de Lissajous}
+		Como el generador de funciones 1 ($f_1 $) es constante y no varia, la única frecuencia a encontrar es $f_2 $; esto se hace igualando a 1 todas las relaciones y despejando $f_2 $ para después sustituir los valores y obtener el valor esta frecuencia.
+		\begin{table}[h]
+			\begin{center}
+				\caption{Valores de $f_2$}
+				\label{table:frecc_f2}
+				\begin{tabular}{ | c | c | c | }
+					\hline
+					Relación & $f_2 $ despejada & Valor de $f_2$ \\\hline
+					$\frac{f_1}{f_2}$ & $f_2 = f_1$ & \SI{58.824}{\hertz} \\\hline
+					$\frac{f_1}{2f_2}$ & $f_2 = \frac{f_1}{2}$ & \SI{29.412}{\hertz} \\\hline
+					$\frac{2f_1}{f_2}$ & $f_2 = 2f_1$ & \SI{117.648}{\hertz} \\\hline
+					$\frac{f_1}{3f_2}$ & $f_2 = \frac{f_1}{3}$ & \SI{19.608}{\hertz} \\\hline
+					$\frac{3f_1}{f_2}$ & $f_2 = 3f_1$ & \SI{176.472}{\hertz} \\\hline
+					$\frac{3f_1}{2f_2}$ & $f_2 = \frac{3f_1}{2}$ & \SI{88.236}{\hertz} \\\hline
+					$\frac{3f_1}{4f_2}$ & $f_2 = \frac{3f_1}{4}$ & \SI{44.118}{\hertz} \\\hline
+					$\frac{5f_1}{4f_2}$ & $f_2 = \frac{5f_1}{4}$ & \SI{73.53}{\hertz} \\\hline
+					$\frac{f_1}{5f_2}$ & $f_2 = \frac{f_1}{5}$ & \SI{11.7648}{\hertz} \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+
+		\begin{longtable}{| c | c | c | c |}
+			\caption{Curvas de Lissajous}
+			\label{table:curvas}\\
+			\hline
+			Caso & Frecuencia $f_1$ [\SI{}{\hertz}] & Frecuencia $f_2$ [\SI{}{\hertz}] & Figura \\ \hline
+			\endfirsthead
+			\hline
+			Caso & Frecuencia $f_1$ [\SI{}{\hertz}] & Frecuencia $f_2$ [\SI{}{\hertz}] & Figura \\ \hline
+			\endhead
+			\hline
+			\endfoot
+
+			$\frac{\omega_1}{\omega_2}$ & \SI{58.824}{\hertz} & \SI{58.824}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/5}}}$ \\\hline
+			$\frac{\omega_1}{2\omega_2}$ & \SI{58.824}{\hertz} & \SI{29.412}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/6}}}$ \\\hline
+			$\frac{2\omega_1}{\omega_2}$ & \SI{58.824}{\hertz} & \SI{117.648}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/7}}}$ \\\hline
+			$\frac{\omega_1}{3\omega_2}$ & \SI{58.824}{\hertz} & \SI{19.608}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/8}}}$ \\\hline
+			$\frac{3\omega_1}{\omega_2}$ & \SI{58.824}{\hertz} & \SI{176.472}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/9}}}$ \\\hline
+			$\frac{3\omega_1}{2\omega_2}$ & \SI{58.824}{\hertz} & \SI{88.236}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/13}}}$ \\\hline
+			$\frac{3\omega_1}{4\omega_2}$ & \SI{58.824}{\hertz} & \SI{44.118}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/10}}}$ \\\hline
+			$\frac{5\omega_1}{4\omega_2}$ & \SI{58.824}{\hertz} & \SI{73.53}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/11}}}$ \\\hline
+			$\frac{\omega_1}{5\omega_2}$ & \SI{58.824}{\hertz} & \SI{11.7648}{\hertz} & $\vcenter{\hbox{\includegraphics[width=5cm]{parte_2/12}}}$ \\\hline
+		\end{longtable}
+% ------> fin resultados <------
+% ------> conclusiones <------
+	\section{Conclusiones}
+		Pese a que los valores se obtuvieron mediante las divisiones del retículo del osciloscopio, dicho calculo no fue preciso pues el valor elegido aleatoriamente para la señal desconocida era de \SI{57.66985}{\hertz} mientras que el teórico fue de \SI{58.824}{\hertz} presento un error del 1.96\%. Debido a este error, al ajustar el segundo generador al valor de \SI{58.824}{\hertz} no se obtuvo la figura lineal correspondiente a la relación de $\frac{\omega_1}{\omega_2}$ como se indica en la teoría, sino dio una curva muy diferente, bastante parecida a una relación de 5:4; como se observa en la figura~\ref{figure:lissajous}. Sin embargo el enunciado pedía que se usara como referencia el teórico se decidió trabajar con los \SI{58.824}{\hertz} como base, aun cuando dicho valor no representaba con exactitud la frecuencia real.
+		Una vez añadido el segundo generador se observa como la mas mínima variación de la frecuencia produce cambios drásticos en la curva de Lissajous. Esto deja en evidencia la importancia de realizar mediciones bastantes precisas.
+% ------> fin conclusiones <------
+% ------> bibliografia <------
+	\section{Bibliografía}
+		\begin{itemize}
+			\item Tektronix, Inc. (2016). XYZs of oscilloscopes. Tektronix.
+			\item Helfrick, A., \& Cooper, W. (2010). Instrumentación electrónica y medidas. Pearson
+			\item Kester, W. (2005). The data conversion handbook. Analog Devices.
+			\item Boylestad, R. L., \& Nashelsky, L. (2015). Electrónica: teoría de circuitos y dispositivos electrónicos. Pearson.
+			\item Serway, R. A., \& Jewett, J. W. (2014). Física para ciencias e ingeniería (Vol. 1). Cengage Learning.
+			\item Halliday, D., Resnick, R., \& Walker, J. (2013). Fundamentos de física (Vol. 1). Wiley.
+			\item Manualdelatex.com. (s.f.). Propiedad intelectual e industrial. Manualdelatex.com.
+		\end{itemize}
+		%\footnote{Documento hecho con \LaTeX}
+% ------> fin bibliografia <------
+\end{document}
