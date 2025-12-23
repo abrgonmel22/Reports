@@ -1,0 +1,271 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage{circuitikz}
+\usepackage{multicol}
+\usetikzlibrary{decorations.markings}
+
+\geometry{letterpaper, margin=2.5cm}
+%\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+%\rhead{3CV6}
+\lhead{Tarea: Bobinas acopladas magneticamente}
+%\cfoot{\thepage}
+%\renewcommand{\figurename}{Figura}
+\sisetup{per-mode=fraction}
+
+\begin{document}
+	\begin{multicols}{2}
+	\section{}% circuito 1
+		\begin{circuitikz}[american]
+			% Nodos
+			% nodos de la bobina 1
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (3,3);
+			\coordinate (D) at (0,3);
+			%nodos de la bobina 2
+			\coordinate (E) at (5,2);
+			\coordinate (F) at (8,2);
+			\coordinate (H) at (8,5);
+			\coordinate (G) at (5,5);
+			%bobina 3
+			\coordinate (I) at (5,1);
+			\coordinate (J) at (8,1);
+			\coordinate (K) at (5,-2);
+			\coordinate (L) at (8,-2);
+			%bobina 4
+			\coordinate (M) at (5,-3); %para vertical
+			\coordinate (N) at (5,-6); %para vertical
+			\coordinate (O) at (8,-3);
+			\coordinate (P) at (8,-6);
+			%paridad de bobinas o polaridad, ya no se si es igual
+			\coordinate (a) at (3.15,2.22); %paridad de la bobina 1
+			\coordinate (e1) at (4.85,4.2); %bobina 2
+			\coordinate (i1) at (4.85,-1.2); % bobina 3
+			\coordinate (m1) at (4.85,-5.2); % bobina 4
+
+		    % circuito de bobinas
+		    \draw
+		    %bobina 1
+		    (A) to (B)
+		    (D) to (C)
+		    (1.5,3) to[open,i>^=$i_1$] (C)
+		    (C) to[L=$L_1$] (B)
+		    %bobina 2
+		    (E) to (F) %parte inferior
+		    (E) to[L=$L_2$] (G) % en medio
+		    (G) to (H) % parte superior
+		    (H) to[open,i>^=$i_2$] (3,5)
+		    %bobina3
+		    (K) to[L=$L_3$] (I)
+		    (I) to (J)
+		    (K) to (L)
+		    (J) to[open,i>^=$i_3$] (3,1)
+		    %bobina 4
+		    (N) to[L=$L_{4}$] (M)
+		    (N) -- (P)
+		    (M) -- (O)
+		    (O) to[open,i>^=$i_4$] (M);
+		    % Puntos visibles en los nodos
+		    \draw
+		        (a) node[circle, fill=black, inner sep=1.2pt] {}
+		        (e1) node[circle, fill=black, inner sep=1.2pt] {}
+		        (i1) node[circle, fill=black, inner sep=1.2pt] {}
+		        (m1) node[circle, fill=black, inner sep=1.2pt] {}
+		        [thick, -] (3.2,2.4) .. controls (3.5,3.7) .. (4.7,4.3)
+		        [thick, -] (4.7,0.3) .. controls (3.6,1.4) .. (4.7,2.7)
+		        [thick, -] (3.25,0.8) .. controls (3.6,-0.2) .. (4.7,-1)
+		        [thick, -] (3.15,0.6) .. controls (3.6,-2) .. (4.7,-4.5)
+		        [thick, -] (4.7,-1.2) .. controls (4,-2.7) .. (4.7,-3.7)
+		        [thick, -] (5.4,3.5) .. controls (6,-0.5) .. (5.4,-4.5);
+		    \draw[red, thick, <->] (2.6,-0.5) .. controls (3.5,-0.3) .. (3.7,-0.2);
+		    \draw[red, thick, <->] (6.5,1.35) .. controls (6,0.9) .. (5.9,0.25);
+		    \node at (1.5,1.5){$L_1=\SI{6}{\henry}$};
+		    \node at (4.8,1.4){$L_{23}=\SI{1.5}{\henry}$};
+		    \node at (6.5,3.5){$L_{2}=\SI{8}{\henry}$};
+		    \node at (6.5,-0.5){$L_{3}=\SI{4}{\henry}$};
+		    \node at (1.7,-0.5){$L_{13}=\SI{2}{\henry}$};
+		    \node at (3,4.3){$L_{12}=\SI{3}{\henry}$};
+		    \node at (6.5,-4.5){$L_{4}=\SI{3}{\henry}$};
+		    \node at (3.2,-3.5){$L_{14}=\SI{1}{\henry}$};
+		    \node at (5,-2.5){$L_{34}=\SI{1}{\henry}$};
+		    \node at (7.5,1.4){$L_{24}=\SI{1.5}{\henry}$};
+
+		\end{circuitikz}
+	\end{multicols}
+		\newpage
+	\begin{multicols}{2}
+	\section{} % circuito 2
+		\begin{circuitikz}[american]
+			% Nodos
+			\coordinate (A) at (0,0);
+			\coordinate (a) at (3.15,0.8); %bobina 1, polaridad
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (3,3);
+			\coordinate (D) at (0,3);
+			\coordinate (E) at (5,1);
+			\coordinate (F) at (5,2);
+			\coordinate (F1) at (5,5);
+			\coordinate (G) at (8,1);
+			\coordinate (H) at (5,-2);
+			\coordinate (G2) at (8,-2);
+			\coordinate (G3) at (8,2);
+			\coordinate (G4) at (8,5);
+			\coordinate (e1) at (4.85,2.8); %bobina 2, polaridad
+			\coordinate (h1) at (4.85,0.25); %bobina 3, polaridad
+
+		    % circuito de bobinas
+		    \draw
+		    (A) to (B)
+		    (D) to (C)
+		    (1.5,3) to[open,i>^=$i_1$] (C)
+		    (C) to[L=$L_1$] (B)
+		    (H) to[L=$L_3$] (E)
+		    (E) to (G)
+		    (H) to (G2)
+		    (F) to (G3)
+		    (F) to[L=$L_2$] (F1)
+		    (F1) to (G4)
+		    (8,2) to[open,i>^=$i_2$] (3,2)
+		    (G) to[open,i>^=$i_3$] (3,1);
+	% 1 0 -1 -2
+		    % Puntos visibles en los nodos
+		    \draw
+		        (a) node[circle, fill=black, inner sep=1.2pt] {}
+		        (e1) node[circle, fill=black, inner sep=1.2pt] {}
+		        (h1) node[circle, fill=black, inner sep=1.2pt] {}
+		        [thick, -] (3.2,2.4) .. controls (3.5,3.7) .. (4.7,4.3)
+		        [thick, -] (4.7,0.3) .. controls (3.6,1.4) .. (4.7,2.7)
+		        [thick, -] (3.2,0.6) .. controls (3.4,-0.5) .. (4.7,-1);
+		    \node at (1.5,1.5){$L_1=\SI{6}{\henry}$};
+		    \node at (5,1.4){$L_{23}=\SI{0.7}{\henry}$};
+		    \node at (6.5,3.5){$L_{2}=\SI{5}{\henry}$};
+		    \node at (6.5,-0.5){$L_{3}=\SI{3}{\henry}$};
+		    \node at (2.7,-0.5){$L_{13}=\SI{0.6}{\henry}$};
+		    \node at (3,4.3){$L_{12}=\SI{0.8}{\henry}$};
+		\end{circuitikz}
+		Obtener:
+		\begin{enumerate}
+			\item El valor de las inductancias mutuas ($\pm L_{kl}$) 
+			\item El valor de las invertancias propias y mutuas ($\Gamma_{kl}$)
+			\item El sistema de ecuaciones de corriente para cada bobina en función de los voltajes
+			\item El sistema de ecuaciones de caída de voltaje en cada bobina en funcion de las corrientes
+		\end{enumerate}
+	\end{multicols}
+	\newpage
+	\begin{multicols}{2}
+		\section{} % circuito 3
+		\begin{circuitikz}[american]
+			% Nodos
+			\coordinate (A) at (0,0);
+			\coordinate (a) at (3.15,2.22);
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (3,3);
+			\coordinate (D) at (0,3);
+			\coordinate (E) at (5,1);
+			\coordinate (F) at (5,2);
+			\coordinate (F1) at (5,5);
+			\coordinate (G) at (8,1);
+			\coordinate (H) at (5,-2);
+			\coordinate (G2) at (8,-2);
+			\coordinate (G3) at (8,2);
+			\coordinate (G4) at (8,5);
+			\coordinate (e1) at (4.85,2.8); %bobina 2, polaridad
+			\coordinate (h1) at (4.85,0.25); %bobina 3, polaridad
+
+		    % circuito de bobinas
+		    \draw
+		    (A) to (B)
+		    (D) to (C)
+		    (1.5,3) to[open,i>^={\(i_{1}=2\sin(500t)\SI{}{\ampere}\)}] (C)
+		    (C) to[L=$L_1$] (B)
+		    (H) to[L=$L_3$] (E)
+		    (E) to (G)
+		    (H) to (G2)
+		    (F) to (G3)
+		    (F) to[L=$L_2$] (F1)
+		    (F1) to (G4)
+		    (G4) to[open,i>^={\(i_{2}=1.5\sin(500t)\SI{}{\ampere}\)}] (3,5)
+		    (G) to[open,i>^={\(i_{3}=0.5\sin(500t)\SI{}{\ampere}\)}] (3,1);
+	% 1 0 -1 -2
+		    % Puntos visibles en los nodos
+		    \draw
+		        (a) node[circle, fill=black, inner sep=1.2pt] {}
+		        (e1) node[circle, fill=black, inner sep=1.2pt] {}
+		        (h1) node[circle, fill=black, inner sep=1.2pt] {}
+		        [thick, -] (3.2,2.4) .. controls (3.5,3.7) .. (4.7,4.3)
+		        [thick, -] (4.7,0.3) .. controls (3.6,1.4) .. (4.7,2.7)
+		        [thick, -] (3.2,0.6) .. controls (3.4,-0.5) .. (4.7,-1);
+		    \node at (1.5,1.5){$L_1=\SI{80}{\milli\henry}$};
+		    \node at (5,1.4){$L_{23}=\SI{10}{\milli\henry}$};
+		    \node at (6.5,3.5){$L_{2}=\SI{50}{\milli\henry}$};
+		    \node at (6.5,-0.5){$L_{3}=\SI{30}{\milli\henry}$};
+		    \node at (2.2,-0.5){$L_{13}=\SI{15}{\milli\henry}$};
+		    \node at (3,4.3){$L_{12}=\SI{20}{\milli\henry}$};
+		\end{circuitikz}
+		Obtener:
+		\begin{enumerate}
+			\item Calcular la caída de tensión de cada bobina
+		\end{enumerate}	
+	\end{multicols}
+	\newpage
+	\begin{multicols}{2}
+		\section{} % circuito 3
+		\begin{circuitikz}[american]
+			% Nodos
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (3,3);
+			\coordinate (D) at (0,3);
+			%4 nodos para bobina 1
+			\coordinate (E) at (5,0);
+			\coordinate (F) at (5,3);
+			\coordinate (G) at (8,0);
+			\coordinate (H) at (8,3);
+			%4 nodos para bobina 2
+			\coordinate (a) at (3.15,0.8); % bobina 1, paridad
+			\coordinate (e1) at (4.85,2.22); %bobina 2, polaridad
+
+		    % circuito de bobinas
+		    \draw
+		    (A) to (B) %parte inferior
+		    (D) to (C)
+		    (D) to[open,i>^=$i_{1}$] (C)
+		    (C) to[L=$L_1$] (B)
+		    %bobina 1
+		    (E) -- (G) %parte inferior
+		    (F) -- (H)
+		    (E) to[L=$L_2$] (F)
+		    (F) to[open,i<^=$i_{2}$] (H);
+		    %bobina 2
+		    
+		    \draw[red, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\arrow{>}}}] (2.6,2.8) -- (2.6,0.2) node[midway,left]{$V_1$}; % sentido de la tension a la bobina 1
+
+		    \draw[red, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\arrow{>}}}] (5.4,2.8) -- (5.4,0.2) node[midway,right]{$V_2$}; % sentido de la tension a la bobina 2
+
+		    % Puntos visibles en los nodos
+		    \draw
+		        (a) node[circle, fill=black, inner sep=1.2pt] {}
+		        (e1) node[circle, fill=black, inner sep=1.2pt] {}
+		        [thick, -] (3.2,2.4) .. controls (4,3.2) .. (4.8,2.4);
+		    \node at (1,1.5){$L_1=\SI{150}{\milli\henry}$};
+		    \node at (7,1.5){$L_{2}=\SI{75}{\milli\henry}$};
+		    \node at (4,4){$L_{12}=\SI{20}{\milli\henry}$};
+		\end{circuitikz}
+		Obtener:
+		\begin{enumerate}
+			\item Calcular la caída de tensión de cada bobina
+			cuando:
+			\begin{enumerate}
+				\item $V_1 = 2.5\sin(1000t) \SI{}{\volt}$
+				\item $V_2 = 0.75\sin(1000t) \SI{}{\volt}$
+			\end{enumerate}
+		\end{enumerate}	
+	\end{multicols}
+			
+\end{document}
