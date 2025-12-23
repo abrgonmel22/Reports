@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage[american]{circuitikz}
+\usepackage{multicol}
+
+\geometry{letterpaper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+%\rhead{3CV6}
+\lhead{Tarea: Método de nodos}
+%\cfoot{\thepage}
+%\renewcommand{\figurename}{Figura}
+\sisetup{per-mode=fraction}
+%\pagestyle{empty}
+
+\begin{document}
+	\section{}
+	\begin{circuitikz}
+		% Nodos
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,0);
+		\coordinate (C) at (8,0);
+		\coordinate (D) at (0,-4);
+		\coordinate (E) at (4,-4);
+		\coordinate (F) at (8,-4);
+		\coordinate (G) at (0,3);
+		\coordinate (H) at (8,3);
+
+	    \draw
+	    (A) to[R=$\SI{2.2}{\kilo\ohm}$] (B)
+	    (B) to[R=$\SI{560}{\ohm}$] (C)
+	    (D) to[battery,l=$\SI{10}{\volt}$,invert] (A)
+	    (D) -- (E) -- (F)
+	    (E) to[R=$\SI{220}{\ohm}$] (B)
+	    (F) to[I=$\SI{10}{\milli\ampere}$] (C)
+	    (A) -- (G)
+	    (C) -- (H)
+	    (G) to[R=$\SI{10}{\ohm}$] (H);
+	    
+	    \foreach \p in {A,B,C,D,E,F,G,H}{
+        \draw (\p) node[circle, fill=black, inner sep=1.2pt] {};
+        }
+	\end{circuitikz}
+
+	\newpage
+
+	\section{}
+	\begin{circuitikz}
+		% Nodos
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,0);
+		\coordinate (C) at (8,0);
+		\coordinate (D) at (0,-4);
+		\coordinate (E) at (4,-4);
+		\coordinate (F) at (8,-4);
+		\coordinate (G) at (0,3);
+		\coordinate (H) at (8,3);
+
+	    \draw
+	    (A) to[R=$\SI{470}{\ohm}$] (B)
+	    (B) to[R=$\SI{100}{\ohm}$] (C)
+	    (E) to[battery,l=$\SI{10}{\volt}$,invert] (B)
+	    (D) -- (E) -- (F)
+	    (D) to[R=$\SI{560}{\ohm}$] (A)
+	    (F) to[I=$\SI{10}{\milli\ampere}$] (C)
+	    (A) -- (G)
+	    (C) -- (H)
+	    (G) to[R=$\SI{100}{\ohm}$] (H);
+	    
+	    \foreach \p in {A,B,C,D,E,F,G,H}{
+        \draw (\p) node[circle, fill=black, inner sep=1.2pt] {};
+        }
+	\end{circuitikz}
+
+	\newpage
+
+	\section{}
+	\begin{circuitikz}
+		% Nodos
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,0);
+		\coordinate (C) at (8,0);
+		\coordinate (D) at (0,-4);
+		\coordinate (E) at (4,-4);
+		\coordinate (F) at (8,-4);
+		\coordinate (G) at (0,3);
+		\coordinate (H) at (8,3);
+
+	    \draw
+	    (A) to[R=$\SI{2.2}{\kilo\ohm}$] (B)
+	    (B) to[R=$\SI{300}{\ohm}$] (C)
+	    (G) to[battery,l=$\SI{12}{\volt}$] (H)
+	    (D) -- (E) -- (F)
+	    (D) to[R=$\SI{470}{\ohm}$] (A)
+	    (B) to[I=$\SI{10}{\milli\ampere}$] (E)
+	    (A) -- (G)
+	    (C) -- (H)
+	    (C) to[R=$\SI{680}{\ohm}$] (F);
+	    
+	    \foreach \p in {A,B,C,D,E,F,G,H}{
+        \draw (\p) node[circle, fill=black, inner sep=1.2pt] {};
+        }
+	\end{circuitikz}
+
+	\newpage
+
+	\section{}
+	\begin{circuitikz}
+		% Nodos
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (4,0);
+		\coordinate (C) at (8,0);
+		\coordinate (D) at (0,-4);
+		\coordinate (E) at (4,-4);
+		\coordinate (F) at (8,-4);
+		\coordinate (G) at (0,3);
+		\coordinate (H) at (8,3);
+
+	    \draw
+	    (A) to[R=$\SI{2.2}{\kilo\ohm}$] (B)
+	    (B) to[R=$\SI{300}{\ohm}$] (C)
+	    (G) to[battery,l=$\SI{12}{\volt}$] (H)
+	    (D) -- (E) -- (F)
+	    (B) to[R=$\SI{100}{\ohm}$] (E)
+	    (A) to[I=$\SI{10}{\milli\ampere}$] (D)
+	    (A) -- (G)
+	    (C) -- (H)
+	    (C) to[R=$\SI{560}{\ohm}$] (F);
+	    
+	    \foreach \p in {A,B,C,D,E,F,G,H}{
+        \draw (\p) node[circle, fill=black, inner sep=1.2pt] {};
+        }
+	\end{circuitikz}
+\end{document}
